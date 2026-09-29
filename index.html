@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blocksters | 310 hand-drawn pixel art NFTs on Robinhood Chain</title>
+<meta name="description" content="310 original hand-drawn pixel art Blocksters from the amazing world of Blocksters. Mint on Robinhood Chain.">
+<meta property="og:title" content="Blocksters">
+<meta property="og:description" content="310 original hand-drawn pixel art Blocksters on Robinhood Chain.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Crect width='8' height='8' fill='%230f1020'/%3E%3Cpath fill='%23b6f04a' d='M2 1h3v1h1v2H5v1h1v2H5v1H2z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f1020; --panel:#181a33; --line:#2c2f5a; --text:#e8e9f6; --mute:#9d9fc4;
+  --lime:#b6f04a; --sky:#55bdef; --px:4px;
+  --display:"Silkscreen","Courier New",monospace; --body:"DM Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font:400 17px/1.6 var(--body)}
+img{display:block;max-width:100%;height:auto;image-rendering:pixelated;background:var(--panel)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+.wrap{width:min(1100px,100% - 40px);margin-inline:auto}
+h1,h2{font-family:var(--display);font-weight:700;line-height:1.1;letter-spacing:.02em}
+h2{font-size:clamp(24px,4vw,34px);margin-bottom:28px}
+.frame{background:var(--panel);box-shadow:0 calc(var(--px)*-1) 0 0 var(--line),0 var(--px) 0 0 var(--line),calc(var(--px)*-1) 0 0 0 var(--line),var(--px) 0 0 0 var(--line)}
+
+nav{padding:18px 0}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:700 18px var(--display)}
+.brand i{width:20px;height:20px;background:var(--lime);box-shadow:var(--px) var(--px) 0 #000}
+nav ul{display:flex;gap:22px;list-style:none;padding:0;font-size:15px}
+nav ul a{text-decoration:none;color:var(--mute)}
+nav ul a:hover{color:var(--text)}
+
+.btn{display:inline-block;font:700 15px var(--display);text-decoration:none;padding:14px 22px;background:var(--lime);color:#0f1020;box-shadow:0 var(--px) 0 0 #6f9a1c;transition:transform .08s,box-shadow .08s}
+.btn:hover{transform:translateY(2px);box-shadow:0 2px 0 0 #6f9a1c}
+.btn.ghost{background:transparent;color:var(--text);box-shadow:inset 0 0 0 var(--px) var(--line)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 var(--px) var(--sky)}
+.btn[aria-disabled="true"]{opacity:.55;pointer-events:none}
+
+.hero{padding:56px 0 88px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(40px,8.4vw,86px);color:var(--lime);text-shadow:var(--px) var(--px) 0 #000;margin-bottom:24px;overflow-wrap:anywhere}
+.hero p{font-size:19px;color:var(--mute);max-width:46ch;margin-bottom:34px}
+.cta{display:flex;flex-wrap:wrap;gap:16px}
+.hero figure{padding:14px}
+.hero figcaption{font:400 14px var(--display);color:var(--mute);padding:14px 4px 2px}
+
+section{padding:72px 0}
+.gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.gallery .frame{padding:6px}
+.gallery span{display:block;font:400 12px var(--display);color:var(--mute);padding:8px 2px 2px}
+
+.rarity{display:grid;gap:18px;max-width:760px}
+.row{display:grid;grid-template-columns:130px 1fr 52px;gap:16px;align-items:center}
+.row b{font:700 14px var(--display)}
+.bar{height:20px;background:var(--panel);box-shadow:inset 0 0 0 var(--px) var(--line)}
+.bar i{display:block;height:100%;background:var(--c);width:var(--w)}
+.row em{font:400 14px var(--display);font-style:normal;text-align:right}
+.note{color:var(--mute);margin-top:22px;max-width:60ch}
+
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.facts div{padding:22px 20px}
+.facts dt{font:400 13px var(--display);color:var(--mute);margin-bottom:8px}
+.facts dd{font:700 20px var(--display);margin:0}
+
+.mint .frame{padding:48px 40px;display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between}
+.mint h2{margin:0 0 10px}
+.mint p{color:var(--mute);max-width:48ch}
+.addr{font:400 14px/1.4 var(--display);word-break:break-all;margin-top:14px}
+
+footer{padding:36px 0 56px;color:var(--mute);font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 28px;justify-content:space-between;border-top:var(--px) solid var(--line);padding-top:26px}
+.links{display:flex;gap:22px;list-style:none;padding:0}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .hero figure{max-width:420px}
+  .gallery{grid-template-columns:repeat(3,1fr)}
+  .facts{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  nav ul{display:none}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .row{grid-template-columns:100px 1fr 44px;gap:10px}
+  .mint .frame{padding:32px 22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><i></i>Blocksters</a>
+    <ul>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#rarity">Rarity</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#mint">Mint</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1>Blocksters</h1>
+      <p>310 original hand-drawn pixel art characters from the amazing world of Blocksters. Every one is different, and all of them live on Robinhood Chain.</p>
+      <div class="cta">
+        <a class="btn" data-link="opensea" href="#mint">Mint a Blockster</a>
+        <a class="btn ghost" href="#gallery">See the collection</a>
+      </div>
+    </div>
+    <figure class="frame">
+      <img id="hero-img" alt="Blockster #20, a red horned character in a black suit" width="640" height="640">
+      <figcaption>Blockster #20</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section id="gallery">
+  <div class="wrap">
+    <h2>Meet a few Blocksters</h2>
+    <div class="gallery" id="grid"></div>
+  </div>
+</section>
+
+<section id="rarity">
+  <div class="wrap">
+    <h2>How rare is each one?</h2>
+    <div class="rarity">
+      <div class="row"><b>Standard</b><div class="bar"><i style="--w:68%;--c:var(--sky)"></i></div><em>211</em></div>
+      <div class="row"><b>Rare</b><div class="bar"><i style="--w:20%;--c:var(--lime)"></i></div><em>62</em></div>
+      <div class="row"><b>Super Rare</b><div class="bar"><i style="--w:6.8%;--c:#ff7ac6"></i></div><em>21</em></div>
+      <div class="row"><b>WTF5</b><div class="bar"><i style="--w:4.2%;--c:#ffc247"></i></div><em>13</em></div>
+      <div class="row"><b>Amazing World</b><div class="bar"><i style="--w:1%;--c:#fff"></i></div><em>3</em></div>
+    </div>
+    <p class="note">The three Amazing World pieces are original one-of-a-kind scenes. Every Blockster also lists its layers, such as Body, Arms, Background and Accessory, in its traits.</p>
+  </div>
+</section>
+
+<section id="details">
+  <div class="wrap">
+    <h2>Collection details</h2>
+    <dl class="facts">
+      <div class="frame"><dt>Supply</dt><dd>310</dd></div>
+      <div class="frame"><dt>Chain</dt><dd>Robinhood Chain</dd></div>
+      <div class="frame"><dt>Art</dt><dd>Hand-drawn pixel art</dd></div>
+      <div class="frame"><dt>Storage</dt><dd>IPFS</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="mint" class="mint">
+  <div class="wrap">
+    <div class="frame">
+      <div>
+        <h2>Get your Blockster</h2>
+        <p id="mint-text">Minting opens soon. Follow the links below to be first in line.</p>
+        <p class="addr" id="contract" hidden></p>
+      </div>
+      <a class="btn" id="mint-btn" data-link="opensea" href="#" aria-disabled="true">Mint soon</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Blocksters</span>
+    <ul class="links">
+      <li><a data-link="opensea" href="#">OpenSea</a></li>
+      <li><a data-link="x" href="#">X</a></li>
+      <li><a data-link="discord" href="#">Discord</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* ===== Edit this block, then push to GitHub. Leave a value "" to hide it. ===== */
+const CONFIG = {
+  opensea:  "",   // e.g. "https://opensea.io/collection/blocksters"
+  x:        "",   // e.g. "https://x.com/yourhandle"
+  discord:  "",   // e.g. "https://discord.gg/yourinvite"
+  contract: "",   // e.g. "0x1234...abcd"
+  images:   "https://ipfs.io/ipfs/bafybeic5nyapgda23bf7ms6o2rkdh5uodrkmqit5sec5zceocjsjdnpbl4/"
+};
+/* ================================================================================ */
+const img = n => CONFIG.images + n + ".png";
+
+document.getElementById("hero-img").src = img(20);
+document.getElementById("grid").innerHTML = [1,37,57,90,130,200,250,300,7,100,150,220].map(n =>
+  `<div class="frame"><img src="${img(n)}" alt="Blockster #${n}" width="384" height="384" loading="lazy"><span>#${n}</span></div>`
+).join("");
+
+document.querySelectorAll("[data-link]").forEach(a => {
+  const url = CONFIG[a.dataset.link];
+  if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; }
+  else if (a.closest("footer")) { a.parentElement.hidden = true; }
+});
+if (CONFIG.opensea) {
+  const b = document.getElementById("mint-btn");
+  b.textContent = "Mint on OpenSea";
+  b.removeAttribute("aria-disabled");
+  document.getElementById("mint-text").textContent = "Mint on OpenSea with a wallet connected to Robinhood Chain.";
+}
+if (CONFIG.contract) {
+  const c = document.getElementById("contract");
+  c.hidden = false;
+  c.textContent = "Contract: " + CONFIG.contract;
+}
+</script>
+</body>
+</html>
