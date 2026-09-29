@@ -19,8 +19,8 @@
 }
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
-body{background:var(--ink);color:var(--text);font:400 17px/1.6 var(--body)}
-img{display:block;max-width:100%;height:auto;image-rendering:pixelated;background:var(--panel)}
+body{background:var(--ink);color:var(--text);font:400 17px/1.6 var(--body);overflow-x:hidden}
+img{display:block;width:100%;height:auto;aspect-ratio:1/1;image-rendering:pixelated;background:var(--panel)}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--sky);outline-offset:3px}
 .wrap{width:min(1100px,100% - 40px);margin-inline:auto}
@@ -44,29 +44,30 @@ nav ul a:hover{color:var(--text)}
 
 .hero{padding:56px 0 88px}
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
-.hero h1{font-size:clamp(40px,8.4vw,86px);color:var(--lime);text-shadow:var(--px) var(--px) 0 #000;margin-bottom:24px;overflow-wrap:anywhere}
+.hero .wrap>*{min-width:0}
+.hero h1{font-size:clamp(34px,8.4vw,86px);color:var(--lime);text-shadow:var(--px) var(--px) 0 #000;margin-bottom:24px;overflow-wrap:anywhere}
 .hero p{font-size:19px;color:var(--mute);max-width:46ch;margin-bottom:34px}
 .cta{display:flex;flex-wrap:wrap;gap:16px}
 .hero figure{padding:14px}
 .hero figcaption{font:400 14px var(--display);color:var(--mute);padding:14px 4px 2px}
 
 section{padding:72px 0}
-.gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
-.gallery .frame{padding:6px}
+.gallery{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
+.gallery .frame{padding:6px;min-width:0}
 .gallery span{display:block;font:400 12px var(--display);color:var(--mute);padding:8px 2px 2px}
 
 .rarity{display:grid;gap:18px;max-width:760px}
-.row{display:grid;grid-template-columns:130px 1fr 52px;gap:16px;align-items:center}
+.row{display:grid;grid-template-columns:130px minmax(0,1fr) 52px;gap:16px;align-items:center}
 .row b{font:700 14px var(--display)}
 .bar{height:20px;background:var(--panel);box-shadow:inset 0 0 0 var(--px) var(--line)}
 .bar i{display:block;height:100%;background:var(--c);width:var(--w)}
 .row em{font:400 14px var(--display);font-style:normal;text-align:right}
 .note{color:var(--mute);margin-top:22px;max-width:60ch}
 
-.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
 .facts div{padding:22px 20px}
 .facts dt{font:400 13px var(--display);color:var(--mute);margin-bottom:8px}
-.facts dd{font:700 20px var(--display);margin:0}
+.facts dd{font:700 20px var(--display);margin:0;overflow-wrap:anywhere}
 
 .mint .frame{padding:48px 40px;display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between}
 .mint h2{margin:0 0 10px}
@@ -78,15 +79,15 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px 28px;justify-content:space-bet
 .links{display:flex;gap:22px;list-style:none;padding:0}
 
 @media (max-width:900px){
-  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:40px}
   .hero figure{max-width:420px}
-  .gallery{grid-template-columns:repeat(3,1fr)}
-  .facts{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:560px){
   nav ul{display:none}
-  .gallery{grid-template-columns:repeat(2,1fr)}
-  .row{grid-template-columns:100px 1fr 44px;gap:10px}
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .row{grid-template-columns:96px minmax(0,1fr) 44px;gap:10px}
   .mint .frame{padding:32px 22px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -117,7 +118,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px 28px;justify-content:space-bet
       </div>
     </div>
     <figure class="frame">
-      <img id="hero-img" alt="Blockster #20, a red horned character in a black suit" width="640" height="640">
+      <div id="hero-slot"></div>
       <figcaption>Blockster #20</figcaption>
     </figure>
   </div>
@@ -187,15 +188,40 @@ const CONFIG = {
   x:        "",   // e.g. "https://x.com/yourhandle"
   discord:  "",   // e.g. "https://discord.gg/yourinvite"
   contract: "",   // e.g. "0x1234...abcd"
-  images:   "https://ipfs.io/ipfs/bafybeic5nyapgda23bf7ms6o2rkdh5uodrkmqit5sec5zceocjsjdnpbl4/"
+  imageCID: "bafybeic5nyapgda23bf7ms6o2rkdh5uodrkmqit5sec5zceocjsjdnpbl4"
 };
 /* ================================================================================ */
-const img = n => CONFIG.images + n + ".png";
 
-document.getElementById("hero-img").src = img(20);
-document.getElementById("grid").innerHTML = [1,37,57,90,130,200,250,300,7,100,150,220].map(n =>
-  `<div class="frame"><img src="${img(n)}" alt="Blockster #${n}" width="384" height="384" loading="lazy"><span>#${n}</span></div>`
-).join("");
+/* Image sources are tried in order until one loads. */
+const SOURCES = [
+  n => `nft/${n}.png`,
+  n => `https://dweb.link/ipfs/${CONFIG.imageCID}/${n}.png`,
+  n => `https://w3s.link/ipfs/${CONFIG.imageCID}/${n}.png`,
+  n => `https://ipfs.io/ipfs/${CONFIG.imageCID}/${n}.png`,
+  n => `https://${CONFIG.imageCID}.ipfs.4everland.io/${n}.png`
+];
+
+function makeImg(n, w) {
+  const el = document.createElement("img");
+  el.alt = "Blockster #" + n;
+  el.width = w; el.height = w;
+  el.decoding = "async";
+  let i = 0;
+  el.onerror = () => { i++; if (i < SOURCES.length) el.src = SOURCES[i](n); else el.onerror = null; };
+  el.src = SOURCES[0](n);
+  return el;
+}
+
+document.getElementById("hero-slot").appendChild(makeImg(20, 640));
+const grid = document.getElementById("grid");
+[1,37,57,90,130,200,250,300,7,100,150,220].forEach(n => {
+  const card = document.createElement("div");
+  card.className = "frame";
+  const tag = document.createElement("span");
+  tag.textContent = "#" + n;
+  card.append(makeImg(n, 384), tag);
+  grid.appendChild(card);
+});
 
 document.querySelectorAll("[data-link]").forEach(a => {
   const url = CONFIG[a.dataset.link];
